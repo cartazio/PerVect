@@ -74,7 +74,9 @@ likewise not sure if the monad m should be inside or outside the resulttype cons
 class TokRegulator (tk :: Threadiness ) where
     --claim :: TokType tk -> IO Bool 
     --release :: TokType tk -> IO Bool
-    withToken :: PerVect v a tk -> ( PerVect v a tk ->IO  b ) 
+
+    -- | withToken is a private type class api for handling the token checking logic
+    withToken :: PerVect v a tk -> ( PerVect v a tk ->IO  b ) -> IO (ResultType tok b )
 
 
 
